@@ -30,8 +30,17 @@ async def command_start_handler(message: Message):
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="Оплатить", url=yoomoney_payment_link)]
     ])
+    welcome_text = (
+        "Тариф: фулл\n"
+        "Стоимость: 500.00 🇷🇺RUB\n"
+        "Срок действия: 1 месяц\n\n"
+        "Вы получите доступ к следующим ресурсам:\n"
+        "• Мой кайф (канал)"
+    )
 
-    await message.answer("Подписка", reply_markup=keyboard)
+    await message.answer(welcome_text, reply_markup=keyboard)
+
+
 
 @dp.callback_query()
 async def handle_payment_callback(callback_query):
